@@ -13,77 +13,67 @@
 </head>
 <body>
 <header class="head_bar">
-  <h1 class="head_bar__title">Bookshelf Apps</h1>
+  <h1 class="head_bar__title">e-Pustaka</h1>
 </header>
+
 <main>
+  <section class="hero-section">
+    <h1>Selamat datang di e-Pustaka!</h1>
+  </section>
+
   <section class="input_section">
-    <h2>Masukkan Buku Baru</h2>
+    <h2>Masukan Buku Baru</h2>
     <form id="inputBook">
       <div class="input">
-        <label for="inputBookTitle">Judul</label>
-        <input id="inputBookTitle" type="text" required>
+        <label for="inputBookTitle">Judul Buku</label>
+        <input id="inputBookTitle" type="text" placeholder="Masukan Judul Buku" required>
       </div>
       <div class="input">
-        <label for="inputBookAuthor">Penulis</label>
-        <input id="inputBookAuthor" type="text" required>
+        <label for="inputBookAuthor">Penulis Buku</label>
+        <input id="inputBookAuthor" type="text" placeholder="Masukan Penulis Buku" required>
       </div>
       <div class="input">
-        <label for="inputBookYear">Tahun</label>
-        <input id="inputBookYear" type="number" required>
+        <label for="inputBookYear">Tanggal Rilis</label>
+        <input id="inputBookYear" type="date" placeholder="Masukan Tanggal Perilisan Buku" required>
       </div>
       <div class="input_inline">
         <label for="inputBookIsComplete">Selesai dibaca</label>
         <input id="inputBookIsComplete" type="checkbox">
       </div>
-      <button id="bookSubmit" type="submit">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
+      <button id="bookSubmit" type="submit">Masukan Buku Baru</button>
     </form>
   </section>
   
   <section class="search_section">
-    <h2>Cari Buku (Opsional)</h2>
+    <h2>Cari Buku</h2>
     <form id="searchBook">
       <label for="searchBookTitle">Judul</label>
-      <input id="searchBookTitle" type="text">
-      <button id="searchSubmit" type="submit">Cari</button>
+      <input id="searchBookTitle" type="text" placeholder="Masukan Judul Buku">
+      <button id="searchSubmit" type="submit" >Cari</button>
     </form>
   </section>
-  
+
   <section class="book_shelf">
-    <h2>Belum selesai dibaca</h2>
-    
+    <h2 class="section-title">Hasil Cari Buku:</h2>
+    <div id="searchedBookList" class="book_list">
+    </div>
+  </section>
+
+  <section class="book_shelf">
+    <h2 class="section-title">Belum selesai dibaca</h2>
     <div id="incompleteBookshelfList" class="book_list">
-
-<!--      <article class="book_item">-->
-<!--        <h3>Book Title</h3>-->
-<!--        <p>Penulis: John Doe</p>-->
-<!--        <p>Tahun: 2002</p>-->
-<!--    -->
-<!--        <div class="action">-->
-<!--          <button class="green">Selesai dibaca</button>-->
-<!--          <button class="red">Hapus buku</button>-->
-<!--        </div>-->
-<!--      </article>-->
-
     </div>
   </section>
   
   <section class="book_shelf">
-    <h2>Selesai dibaca</h2>
-    
+    <h2 class="section-title">Selesai dibaca</h2>
     <div id="completeBookshelfList" class="book_list">
-<!--      <article class="book_item">-->
-<!--        <h3>Book Title</h3>-->
-<!--        <p>Penulis: John Doe</p>-->
-<!--        <p>Tahun: 2002</p>-->
-<!--        -->
-<!--        <div class="action">-->
-<!--          <button class="green">Belum selesai di Baca</button>-->
-<!--          <button class="red">Hapus buku</button>-->
-<!--        </div>-->
-<!--      </article>-->
     </div>
   </section>
 </main>
+<footer>
+  <p>Created by Rendy Christian</p>
+</footer>
 
 <script src="main.js"></script>
 
