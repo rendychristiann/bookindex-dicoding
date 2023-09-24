@@ -75,49 +75,52 @@ document.addEventListener(BOOK_EVENT, function () {
       completedBookList.append(bookElement);
     }
   }
-  for (const bookitem2 of books) {
-    const bookListElement = displayBookList(bookitem2);
+    const bookListElement = displayBookList();
     bookList.append(bookListElement);
-  }
 });
 
 //  untuk menampilkan buku yang dicari oleh input user
 function displayBookList(bookObject) {
-  const textListTitle = document.createElement("h2");
-  textListTitle.innerText = bookObject.title;
+  const searchInput = document.querySelector("[data-search]");
+  const container2 = document.createElement("div"); // Membuat container luar
+  container2.classList.add("container2"); // Tambahkan kelas jika diperlukan
 
-  const textListAuthor = document.createElement("p");
-  textListAuthor.innerText = "Penulis : " + bookObject.author;
-
-  const textListYear = document.createElement("p");
-  textListYear.innerText = "Tahun     : " + bookObject.year;
-
-  const listContainer = document.createElement("div");
-  listContainer.classList.add("inner");
-  listContainer.append(textListTitle, textListAuthor, textListYear);
-
-  const container2 = document.createElement("div");
-  container2.classList.add("item", "shadow");
-  container2.append(listContainer);
-  container2.setAttribute("id", "book-${bookObject.id");
-  container2.classList.add("hide");
-
-  //   Tampilkan container jika input cari buku = judul buku tersedia
-  const searchButton = document.getElementById("searchSubmit");
-  const bookTitleValue = capitalizeFirstLetter(bookObject.title);
-  searchButton.addEventListener("click", function (searchevent) {
-    const searchBar = document.getElementById("searchBookTitle").value;
-    const searchBarString = capitalizeFirstLetter(searchBar);
-    searchevent.preventDefault();
-    if (searchBarString != bookTitleValue) {
-      container2.classList.add("hide");
-    } else {
-      container2.classList.remove("hide");
+  searchInput.addEventListener("input", (e) => {
+    const valueInput = e.target.value.toLowerCase();
+    container2.innerHTML = ""; // Kosongkan kontainer sebelum menambahkan hasil baru
+    if (valueInput.trim() === "") {
+      
+      return;
     }
+    for (let i = 0; i < books.length; i++) {
+      if (books[i].title.toLowerCase().includes(valueInput)) {
+        const textListTitle = document.createElement("h2");
+        textListTitle.innerText = books[i].title;
+
+        const textListAuthor = document.createElement("p");
+        textListAuthor.innerText = "Penulis : " + books[i].author;
+
+        const textListYear = document.createElement("p");
+        textListYear.innerText = "Tahun     : " + books[i].year;
+
+        const listContainer = document.createElement("div");
+        listContainer.classList.add("inner");
+        listContainer.append(textListTitle, textListAuthor, textListYear);
+
+        const containerItem = document.createElement("div");
+        containerItem.classList.add("item", "shadow");
+        containerItem.append(listContainer);
+        container2.appendChild(containerItem); // Tambahkan containerItem ke dalam container2
+      }
+      
+    }
+    
   });
 
-  return container2;
+  return container2; // Kembalikan container2
 }
+
+
 
 // Function capitalize huruf pertama untuk error handling
 function capitalizeFirstLetter(inputString) {
